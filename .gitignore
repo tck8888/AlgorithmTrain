@@ -1,2 +1,5 @@
 out/
 *.iml
+.idea
+src/test
+
