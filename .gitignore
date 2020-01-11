@@ -2,4 +2,8 @@ out/
 *.iml
 .idea
 src/test
+.gradle
+gradlew.bat
+gradlew
+gradle
 
