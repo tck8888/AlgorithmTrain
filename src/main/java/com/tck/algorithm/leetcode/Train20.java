@@ -1,7 +1,6 @@
 package com.tck.algorithm.leetcode;
 
-import java.util.HashMap;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author tck88
@@ -20,41 +19,53 @@ public class Train20 {
     // 输入: "{[]}"   }][{
     //输出: true
 
-    private HashMap<Character, Character> map;
+    public static boolean isValid(String s) {
+        int n = s.length();
 
-    public Train20() {
-        map = new HashMap<>();
-
-        map.put('[', ']');
-        map.put('(', ')');
-        map.put('{', '}');
-
-    }
-
-    public boolean isValid(String s) {
-        if (s.length() < 2) {
+        if (n % 2 == 1) {
             return false;
         }
-        char[] chars = s.toCharArray();
-        Stack<Character> characters = new Stack<>();
-        for (int i = 0; i < chars.length; i++) {
-            char aChar = chars[i];
-            if (characters.size() == 0) {
-                characters.push(aChar);
-            } else {
-                Character peek = characters.peek();
-                if (map.get(peek) == aChar) {
-                    characters.pop();
-                } else {
-                    characters.push(aChar);
+
+        Map<Character, Character> pairs = new HashMap<Character, Character>() {
+            {
+                put(')', '(');
+                put(']', '[');
+                put('}', '{');
+            }
+        };
+
+        Deque<Character> stack = new LinkedList<>();
+        for (int i = 0; i < n; i++) {
+            char ch = s.charAt(i);
+            if (pairs.containsKey(ch)) {
+                if (stack.isEmpty() || stack.peek() != pairs.get(ch)) {
+                    return false;
                 }
+                stack.pop();
+            } else {
+                stack.push(ch);
             }
         }
 
-        return characters.size() == 0;
+        return stack.isEmpty();
     }
 
     public static void main(String[] args) {
-
+        try {
+            System.out.println(isValid(""));
+            System.out.println(isValid("()"));
+            System.out.println(isValid("()[]{}"));
+            System.out.println(isValid("(]"));
+            System.out.println(isValid("([)]"));
+            System.out.println(isValid("{[]}"));
+           /* false
+            true
+            true
+            false
+            false
+            true*/
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
