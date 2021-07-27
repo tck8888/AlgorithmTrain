@@ -10,6 +10,9 @@ import java.util.List;
 public class Train234 {
 
     public boolean isPalindrome(ListNode head) {
+        if (head == null) {
+            return true;
+        }
         List<Integer> values = new ArrayList<>();
 
         ListNode currentNode = head;
@@ -24,16 +27,16 @@ public class Train234 {
             return false;
         }
 
-        int start = 0;
+        int front = 0;
 
-        int end = size - 1;
+        int back = size - 1;
 
-        while (start < end) {
-            if (!values.get(start).equals(values.get(end))) {
+        while (front < back) {
+            if (!values.get(front).equals(values.get(back))) {
                 return false;
             }
-            start++;
-            end--;
+            front++;
+            back--;
         }
         return true;
     }
