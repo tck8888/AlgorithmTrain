@@ -1,5 +1,8 @@
 package com.tck.algorithm.leetcode.linkedlist;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MyLinkedList {
 
     /**
@@ -26,5 +29,23 @@ public class MyLinkedList {
         }
         return head;
 
+    }
+
+
+    public static List<Integer> getLinkedListValue(ListNode listNode) {
+        List<Integer> values = new ArrayList<>();
+
+        if (listNode == null) {
+            return values;
+        }
+        ListNode head = listNode;
+        values.add(head.val);
+
+        while (head.next != null) {
+            head = head.next;
+            values.add(head.val);
+        }
+
+        return values;
     }
 }

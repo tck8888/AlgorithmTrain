@@ -3,7 +3,7 @@ package com.tck.algorithm.leetcode.linkedlist;
 public class ListNode {
 
     int val;
-    ListNode next;
+   public ListNode next;
 
     public ListNode() {
 
