@@ -3,7 +3,7 @@ package com.tck.algorithm.leetcode.array;
 import java.util.*;
 
 /**
- * https://leetcode-cn.com/problems/contains-duplicate/
+ * https://leetcode-cn.com/study-plan/data-structures/?progress=xte5j6g
  *
  * @author tck88
  * @date 2021/7/31
