@@ -6,6 +6,8 @@ import java.util.List;
 public class DPTrain118 {
 
     /**
+     * https://leetcode-cn.com/problems/pascals-triangle/
+     *
      * 杨辉三角
      *
      * @param numRows 给定一个非负整数 numRows，生成「杨辉三角」的前 numRows 行
