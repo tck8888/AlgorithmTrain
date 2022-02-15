@@ -1,6 +1,9 @@
 package com.tck.algorithm.leetcode.array;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * https://leetcode-cn.com/leetbook/read/array-and-string/yf47s/
@@ -52,6 +55,34 @@ public class LeetCodeBookArrayTest {
     }
 
 
+    /**
+     * https://leetcode-cn.com/leetbook/read/array-and-string/c5tv3/
+     * 合并区间
+     *
+     * @param intervals
+     * @return
+     */
+    public int[][] merge(int[][] intervals) {
+        if (intervals == null || intervals.length <= 1) {
+            return intervals;
+        }
+
+        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
+        List<int[]> list = new ArrayList<>();
+        int[] term = intervals[0];
+        for (int i = 1; i < intervals.length; i++) {
+            if (term[1] >= intervals[i][0]) {
+                term[1] = Math.max(term[1], intervals[i][1]);
+            } else {
+                list.add(term);
+                term = intervals[i];
+            }
+        }
+        list.add(term);
+
+        return list.toArray(new int[list.size()][]);
+    }
+
     public static void main(String[] args) {
         System.out.println("找到数组的中间位置");
         System.out.println(new LeetCodeBookArrayTest().pivotIndex(new int[]{1, 7, 3, 6, 5, 6}));
@@ -59,12 +90,15 @@ public class LeetCodeBookArrayTest {
         System.out.println(new LeetCodeBookArrayTest().pivotIndex(new int[]{1, 2, 3}));
 
         System.out.println("搜索插入位置");
-       // System.out.println(new LeetCodeBookArrayTest().searchInsert(new int[]{1, 3, 5, 6}, 5));
-        //System.out.println(new LeetCodeBookArrayTest().searchInsert(new int[]{1, 3, 5, 6}, 2));
-        //System.out.println(new LeetCodeBookArrayTest().searchInsert(new int[]{1, 3, 5, 6}, 7));
-        //System.out.println(new LeetCodeBookArrayTest().searchInsert(new int[]{1, 3, 5, 6}, 0));
-        //System.out.println(new LeetCodeBookArrayTest().searchInsert(new int[]{1}, 0));
-        //System.out.println(new LeetCodeBookArrayTest().searchInsert(new int[]{1,2,3,4,5}, 2));
-        System.out.println(new LeetCodeBookArrayTest().searchInsert(new int[]{1,2,3,4,5}, 4));
+        System.out.println(new LeetCodeBookArrayTest().searchInsert(new int[]{1, 3, 5, 6}, 5));
+        System.out.println(new LeetCodeBookArrayTest().searchInsert(new int[]{1, 3, 5, 6}, 2));
+        System.out.println(new LeetCodeBookArrayTest().searchInsert(new int[]{1, 3, 5, 6}, 7));
+        System.out.println(new LeetCodeBookArrayTest().searchInsert(new int[]{1, 3, 5, 6}, 0));
+        System.out.println(new LeetCodeBookArrayTest().searchInsert(new int[]{1}, 0));
+        System.out.println(new LeetCodeBookArrayTest().searchInsert(new int[]{1, 2, 3, 4, 5}, 2));
+
+        System.out.println("合并区间");
+        System.out.println(Arrays.deepToString(new LeetCodeBookArrayTest().merge(new int[][]{{1, 3}, {2, 6}, {8, 10}, {15, 18}})));
+        System.out.println(Arrays.deepToString(new LeetCodeBookArrayTest().merge(new int[][]{{1, 4}, {4, 5}})));
     }
 }
