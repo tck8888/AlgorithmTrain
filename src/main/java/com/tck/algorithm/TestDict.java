@@ -2,9 +2,7 @@ package com.tck.algorithm;
 
 import com.tck.algorithm.leetcode.Solution;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class TestDict {
 
@@ -100,6 +98,47 @@ public class TestDict {
         return true;
     }
 
+    /**
+     * https://leetcode-cn.com/leetbook/read/all-about-lockup-table/fc4ic/
+     * 据字符出现频率排序
+     *
+     * @param s
+     * @return
+     */
+    public String frequencySort(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        char[] chars = s.toCharArray();
+        for (char aChar : chars) {
+            map.put(aChar, map.getOrDefault(aChar, 0) + 1);
+        }
+
+        List<Map.Entry<Character, Integer>> list = new ArrayList<Map.Entry<Character, Integer>>(map.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<Character, Integer>>() {
+            @Override
+            public int compare(Map.Entry<Character, Integer> o1, Map.Entry<Character, Integer> o2) {
+                int compare = (o2.getValue()).compareTo(o1.getValue());
+                return compare;
+            }
+        });
+
+        StringBuffer stringBuffer = new StringBuffer();
+
+        for (Map.Entry<Character, Integer> entry : list) {
+            int value = entry.getValue();
+            stringBuffer.append(String.valueOf(entry.getKey()).repeat(Math.max(0, value)));
+        }
+
+
+        return stringBuffer.toString();
+    }
+
+    public String frequencySort2(String s) {
+        char[] chars = s.toCharArray();
+        Arrays.sort(chars);
+        return String.valueOf(chars);
+    }
+
+
     public static void main(String[] args) {
         System.out.println("有效的字母异位词 方法一");
         long start = System.currentTimeMillis();
@@ -127,6 +166,20 @@ public class TestDict {
         System.out.println("期待值:true，实际值:" + new TestDict().isIsomorphic2("egg", "add"));
         System.out.println("期待值:false，实际值:" + new TestDict().isIsomorphic2("foo", "bar"));
         System.out.println("期待值:true，实际值:" + new TestDict().isIsomorphic2("paper", "title"));
+        System.out.println("耗时：" + (System.currentTimeMillis() - start));
+
+        System.out.println("据字符出现频率排序 方法一");
+        start = System.currentTimeMillis();
+        System.out.println("期待值:eert 或者 eetr，实际值:" + new TestDict().frequencySort("tree"));
+        System.out.println("期待值:cccaaa 或者 aaaccc，实际值:" + new TestDict().frequencySort("cccaaa"));
+        System.out.println("期待值:bbAa 或者 bbaA，实际值:" + new TestDict().frequencySort("Aabb"));
+        System.out.println("耗时：" + (System.currentTimeMillis() - start));
+
+        System.out.println("据字符出现频率排序 方法二");
+        start = System.currentTimeMillis();
+        System.out.println("期待值:eert 或者 eetr，实际值:" + new TestDict().frequencySort2("tree"));
+        System.out.println("期待值:cccaaa 或者 aaaccc，实际值:" + new TestDict().frequencySort2("cccaaa"));
+        System.out.println("期待值:bbAa 或者 bbaA，实际值:" + new TestDict().frequencySort2("Aabb"));
         System.out.println("耗时：" + (System.currentTimeMillis() - start));
     }
 }
