@@ -112,30 +112,17 @@ public class TestDict {
             map.put(aChar, map.getOrDefault(aChar, 0) + 1);
         }
 
-        List<Map.Entry<Character, Integer>> list = new ArrayList<Map.Entry<Character, Integer>>(map.entrySet());
-        Collections.sort(list, new Comparator<Map.Entry<Character, Integer>>() {
-            @Override
-            public int compare(Map.Entry<Character, Integer> o1, Map.Entry<Character, Integer> o2) {
-                int compare = (o2.getValue()).compareTo(o1.getValue());
-                return compare;
-            }
-        });
+        List<Map.Entry<Character, Integer>> list = new ArrayList<>(map.entrySet());
+        list.sort((o1, o2) -> (o2.getValue()).compareTo(o1.getValue()));
 
-        StringBuffer stringBuffer = new StringBuffer();
+        StringBuilder stringBuffer = new StringBuilder();
 
         for (Map.Entry<Character, Integer> entry : list) {
             int value = entry.getValue();
             stringBuffer.append(String.valueOf(entry.getKey()).repeat(Math.max(0, value)));
         }
 
-
         return stringBuffer.toString();
-    }
-
-    public String frequencySort2(String s) {
-        char[] chars = s.toCharArray();
-        Arrays.sort(chars);
-        return String.valueOf(chars);
     }
 
 
@@ -175,11 +162,5 @@ public class TestDict {
         System.out.println("期待值:bbAa 或者 bbaA，实际值:" + new TestDict().frequencySort("Aabb"));
         System.out.println("耗时：" + (System.currentTimeMillis() - start));
 
-        System.out.println("据字符出现频率排序 方法二");
-        start = System.currentTimeMillis();
-        System.out.println("期待值:eert 或者 eetr，实际值:" + new TestDict().frequencySort2("tree"));
-        System.out.println("期待值:cccaaa 或者 aaaccc，实际值:" + new TestDict().frequencySort2("cccaaa"));
-        System.out.println("期待值:bbAa 或者 bbaA，实际值:" + new TestDict().frequencySort2("Aabb"));
-        System.out.println("耗时：" + (System.currentTimeMillis() - start));
     }
 }

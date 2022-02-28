@@ -7,7 +7,7 @@ import java.util.HashMap;
  * https://leetcode-cn.com/problems/two-sum/
  * 两数之和
  */
-public class ArrayTrain {
+public class Leetcode1 {
 
     /**
      *
@@ -40,7 +40,7 @@ public class ArrayTrain {
 
 
     public static void main(String[] args) {
-        ArrayTrain train = new ArrayTrain();
+        Leetcode1 train = new Leetcode1();
 
         int[] result = train.twoSum(new int[]{2, 7, 11, 15}, 9);
         System.out.println("[" + result[0] + "," + result[1] + "]");
