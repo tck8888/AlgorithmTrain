@@ -2,8 +2,8 @@ package com.tck.algorithm.leetcode.linkedlist;
 
 public class ListNode {
 
-    int val;
-   public ListNode next;
+    public int val;
+    public ListNode next;
 
     public ListNode() {
 
@@ -20,9 +20,6 @@ public class ListNode {
 
     @Override
     public String toString() {
-        return "ListNode{" +
-                "val=" + val +
-                ", next=" + next +
-                '}';
+        return "ListNode{" + "val=" + val + ", next=" + next + '}';
     }
 }

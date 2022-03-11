@@ -115,6 +115,20 @@ public class TreeErgodic {
 
     }
 
+
+    /**
+     * https://leetcode-cn.com/leetbook/read/data-structure-binary-tree/xej9yc/
+     * 二叉树的层序遍历
+     * 层序遍历就是逐层遍历树结构。
+     * https://leetcode-cn.com/problems/binary-tree-level-order-traversal/
+     */
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        //TODO:二叉树的层序遍历
+        return result;
+    }
+
+
     public static void main(String[] args) {
         System.out.println("144. 二叉树的前序遍历");
         System.out.println("输入:[1,null,2,3]");
@@ -153,5 +167,16 @@ public class TreeErgodic {
         System.out.println("期待输出:[],实际输出:" + new TreeErgodic().postorderTraversal(TreeCreate.create()));
         System.out.println("输入:[1]");
         System.out.println("期待输出:[1],实际输出:" + new TreeErgodic().postorderTraversal(TreeCreate.create(1)));
+
+        System.out.println("                                ");
+        System.out.println("                                ");
+        System.out.println("                                ");
+        System.out.println("102. 二叉树的层序遍历");
+        System.out.println("输入:[3,9,20,null,null,15,7]");
+        System.out.println("期待输出:[[3],[9,20],[15,7]],实际输出:" + new TreeErgodic().levelOrder(TreeCreate.create(3, 9, 20, null, null, 15, 7)));
+        System.out.println("输入:[1]");
+        System.out.println("期待输出:[[1]],实际输出:" + new TreeErgodic().levelOrder(TreeCreate.create(1)));
+        System.out.println("输入:[]");
+        System.out.println("期待输出:[],实际输出:" + new TreeErgodic().levelOrder(TreeCreate.create()));
     }
 }
