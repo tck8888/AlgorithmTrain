@@ -1,4 +1,4 @@
-package com.tck.algorithm.leetcode.tencent;
+package com.tck.algorithm.leetcode.tencent.easy;
 
 
 /**
