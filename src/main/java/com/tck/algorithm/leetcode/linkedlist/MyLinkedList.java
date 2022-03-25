@@ -5,13 +5,11 @@ import java.util.List;
 
 public class MyLinkedList {
 
-    /**
-     * 创建链表
-     *
-     * @param arr 数组
-     * @return 链表
-     */
-    public static ListNode createLinkedList(int[] arr) {
+    public static ListNode createLinkedList2(int... arr) {
+        return getListNode(arr);
+    }
+
+    private static ListNode getListNode(int[] arr) {
         int len = arr.length;
         if (len == 0) {
             return null;
@@ -28,6 +26,16 @@ public class MyLinkedList {
             pre = listNode;
         }
         return head;
+    }
+
+    /**
+     * 创建链表
+     *
+     * @param arr 数组
+     * @return 链表
+     */
+    public static ListNode createLinkedList(int[] arr) {
+        return getListNode(arr);
 
     }
 
